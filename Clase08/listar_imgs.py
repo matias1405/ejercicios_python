@@ -17,8 +17,13 @@ def archivos_png(directorio):
                 archivos.append(name)
     return archivos
     
-    
-    
+def ordenar_imgs(directorio):
+    archivos = []
+    for root, dirs, files in os.walk(directorio):
+        tuplas = ((root, name) for name in files if name[-4:] == '.png')
+        for tupla in tuplas:
+            archivos.append(tupla)
+    return archivos
     
 if __name__ == "__main__":
     if len(sys.argv) != 2:
